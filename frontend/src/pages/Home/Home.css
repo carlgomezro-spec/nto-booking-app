@@ -1,44 +1,32 @@
-.tattoo-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.tattoo-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.tattoo-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.tattoo-card h3 {
-  color: #fff;
-  margin: 10px;
-  font-size: 1.2rem;
-}
-
-.tattoo-card p {
-  color: #ccc;
-  margin: 0 10px 10px;
-  font-size: 0.9rem;
-}
-
-.tattoo-carousel {
-  padding: 20px;
-}
-
-.swiper-slide {
+section {
+  padding: 20px 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+/* El carrusel nunca corta */
+.tattoo-carousel,
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  overflow: visible !important;
+}
+
+/* Aseguramos que cada slide tenga el tamaño correcto del contenido */
+.swiper-slide {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: auto !important;   /* evita el solapamiento */
+  min-height: 180px;         /* asegura espacio mínimo */
+  object-fit: cover;   
+}
+
+/* Swiper wrapper debe permitir que los slides crezcan */
+.swiper-wrapper {
+  align-items: flex-start !important;
 }
 
 

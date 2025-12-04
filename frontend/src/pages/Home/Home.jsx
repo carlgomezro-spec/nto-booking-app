@@ -11,6 +11,16 @@ const Home = () => {
   const [tattoos, setTattoos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const handleResize = () => setIsMobile(window.innerWidth <= 600);
+  handleResize(); // check inicial
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+  
 
   useEffect(() => {
     const fetchTattoos = async () => {
@@ -41,22 +51,23 @@ const Home = () => {
     <section>
       <h1>Discover</h1>
         <h3>WHAT'S NEW TODAY</h3>
-      <div className="tattoo-carousel">
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1} // 1 por defecto
-        breakpoints={{
-          600: { slidesPerView: 2 },
-          900: { slidesPerView: 3 },
-        }}
-      >
-        {tattoos.map((tattoo) => (
-          <SwiperSlide key={tattoo.id}>
-            <TattooCard tattoo={tattoo} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+      {isMobile ? (
+  <div className="tattoo-carousel">
+    <Swiper spaceBetween={20} slidesPerView={1}>
+      {tattoos.map((tattoo) => (
+        <SwiperSlide key={tattoo.id}>
+          <TattooCard tattoo={tattoo} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+) : (
+  <div className="tattoo-list">
+    {tattoos.map((tattoo) => (
+      <TattooCard key={tattoo.id} tattoo={tattoo} />
+    ))}
+  </div>
+)}
     </section>
     
   );
