@@ -1,7 +1,108 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../Booking/Booking.css";
 
 const Booking = () => {
-  return <h1>Booking Page</h1>;
+  const { id } = useParams(); // id del tatuaje
+  const navigate = useNavigate();
+
+  const [tattoo, setTattoo] = useState(null);
+  const [date, setDate] = useState(""); // YYYY-MM-DD
+  const [time, setTime] = useState(""); // HH:MM
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  // Obtener usuario logueado desde localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+  const id_user = user ? user.id_user : null;
+
+  useEffect(() => {
+    if (!/^\d+$/.test(id)) {
+      setError("ID inválido para el tatuaje");
+      setLoading(false);
+      return;
+    }
+
+    const fetchTattoo = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/api/tattoos/${id}`);
+        setTattoo(res.data);
+        setLoading(false);
+      } catch {
+        setError("No se pudo cargar el tatuaje");
+        setLoading(false);
+      }
+    };
+
+    fetchTattoo();
+  }, [id]);
+
+  const handleConfirmBooking = async () => {
+    if (!id_user) return alert("Debes estar logueado para reservar");
+    if (!date || !time) return alert("Selecciona fecha y hora");
+
+    // Combinar fecha y hora en timestamp ISO
+    const dateTimeISO = new Date(`${date}T${time}:00`).toISOString();
+    const hour_booking = `${time}:00`;
+
+    console.log({ id_user, id_tattoo: tattoo.id_tattoo, date_booking: dateTimeISO, hour_booking });
+
+    try {
+      await axios.post("http://localhost:3000/api/bookings", {
+        id_user,
+        id_tattoo: tattoo.id_tattoo,
+        date_booking: dateTimeISO,
+        hour_booking,
+      });
+
+      alert("Reserva completada!");
+      navigate("/profile");
+    } catch (err) {
+      console.error(err.response ? err.response.data : err);
+      alert("No se pudo crear la reserva");
+    }
+  };
+
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <section className="booking-page">
+      <h1>Reserva tu tatuaje</h1>
+
+      <div className="booking-image-wrapper">
+        <img
+          src={`http://localhost:3000${tattoo.image}`}
+          alt={tattoo.name}
+          className="booking-image"
+        />
+      </div>
+
+      <div className="booking-info">
+        <h2>{tattoo.name}</h2>
+        <p>{tattoo.description}</p>
+
+        <label>Selecciona fecha:</label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+
+        <label>Selecciona hora:</label>
+        <input
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
+
+        <button className="confirm-booking-btn" onClick={handleConfirmBooking}>
+          Confirmar reserva
+        </button>
+      </div>
+    </section>
+  );
 };
 
 export default Booking;

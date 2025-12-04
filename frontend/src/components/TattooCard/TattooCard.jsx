@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../TattooCard/TattooCard.css";
 
 const TattooCard = ({ tattoo }) => {
+  const navigate = useNavigate();
+
+  const handleReserve = () => {
+    // Usar id_tattoo numérico en vez de uuid
+    navigate(`/booking/${tattoo.id_tattoo}`);
+  };
+
   return (
     <div className="tattoo-card">
       <div className="tattoo-image-wrapper">
@@ -15,7 +23,9 @@ const TattooCard = ({ tattoo }) => {
       </div>
       <div className="tattoo-list">
         <h3>{tattoo.name}</h3>
-        <button className="reserve-btn">RESERVA</button>
+        <button className="reserve-btn" onClick={handleReserve}>
+          RESERVA
+        </button>
       </div>
     </div>
   );
