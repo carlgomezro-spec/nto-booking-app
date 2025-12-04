@@ -18,7 +18,7 @@ const AppRouter = () => {
 
         {/* Rutas dentro de Main */}
         <Route
-          path="/"
+          path="/home"
           element={
             <Main>
               <Home />
@@ -34,7 +34,7 @@ const AppRouter = () => {
           }
         />
         <Route
-          path="/booking"
+          path="/booking/:id"
           element={
             <Main>
               <Booking />

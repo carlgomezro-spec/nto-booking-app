@@ -55,16 +55,16 @@ useEffect(() => {
   <div className="tattoo-carousel">
     <Swiper spaceBetween={20} slidesPerView={1}>
       {tattoos.map((tattoo) => (
-        <SwiperSlide key={tattoo.id}>
+       <SwiperSlide key={tattoo.uuid}>
           <TattooCard tattoo={tattoo} />
-        </SwiperSlide>
+      </SwiperSlide>
       ))}
     </Swiper>
   </div>
 ) : (
   <div className="tattoo-list">
     {tattoos.map((tattoo) => (
-      <TattooCard key={tattoo.id} tattoo={tattoo} />
+      <TattooCard key={tattoo.uuid} tattoo={tattoo} />
     ))}
   </div>
 )}
