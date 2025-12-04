@@ -3,6 +3,10 @@ const cowsay = require("cowsay");
 
 const app = express(); // Creando el servidor
 app.use(express.json());
+const path = require("path");
+const cors = require("cors")
+// Permitir cualquier origen (para desarrollo)
+app.use(cors());
 
 // Configurar puerto con valor por defecto
 const port = process.env.PORT || 3000;
@@ -15,12 +19,15 @@ const error404 = require("./middlewares/error404");
 const morgan = require("./middlewares/morgan");
 
 // Configuración del logger con Morgan
-app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
+app.use(morgan(':method :∫url :status :param[id] - :response-time ms :body'));
 
 // Rutas
 app.use("/api/users", require("./routes/user.routes"));      
 app.use("/api/tattoos", require("./routes/tattoo.routes"));  
 app.use("/api/bookings", require("./routes/booking.routes")); 
+
+// Para poder acceder a las imágenes
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Ruta base de comprobación
 app.get('/api', (req, res) => {

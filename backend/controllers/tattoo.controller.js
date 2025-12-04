@@ -21,13 +21,25 @@ module.exports = {
   },
 
   createTattoo: async (req, res) => {
-    try {
-      const newTattoo = await Tattoo.create(req.body);
-      res.status(201).json(newTattoo);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+  try {
+    const { name, description } = req.body;
+
+    let imagePath = null;
+    if (req.file) {
+      imagePath = `/uploads/${req.file.filename}`; // ruta pública
     }
-  },
+
+    const newTattoo = await Tattoo.create({
+      name,
+      description,
+      image: imagePath, // guarda la ruta en la BD
+    });
+
+    res.status(201).json(newTattoo);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+},
 
   updateTattoo: async (req, res) => {
     try {
