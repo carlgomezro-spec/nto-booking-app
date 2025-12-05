@@ -17,6 +17,9 @@ const Booking = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const id_user = user ? user.id_user : null;
 
+  // usar VITE_API_URL
+  const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
   useEffect(() => {
     if (!/^\d+$/.test(id)) {
       setError("ID inválido para el tatuaje");
@@ -26,7 +29,7 @@ const Booking = () => {
 
     const fetchTattoo = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/tattoos/${id}`);
+        const res = await axios.get(`${API_BASE}/api/tattoos/${id}`);
         setTattoo(res.data);
         setLoading(false);
       } catch {
@@ -36,7 +39,7 @@ const Booking = () => {
     };
 
     fetchTattoo();
-  }, [id]);
+  }, [id, API_BASE]);
 
   const handleConfirmBooking = async () => {
     if (!id_user) return alert("Debes estar logueado para reservar");
@@ -49,7 +52,7 @@ const Booking = () => {
     console.log({ id_user, id_tattoo: tattoo.id_tattoo, date_booking: dateTimeISO, hour_booking });
 
     try {
-      await axios.post("http://localhost:3000/api/bookings", {
+      await axios.post(`${API_BASE}/api/bookings`, {
         id_user,
         id_tattoo: tattoo.id_tattoo,
         date_booking: dateTimeISO,
@@ -73,7 +76,13 @@ const Booking = () => {
 
       <div className="booking-image-wrapper">
         <img
-          src={`http://localhost:3000${tattoo.image}`}
+          src={
+            tattoo?.image
+              ? tattoo.image.startsWith("http")
+                ? tattoo.image
+                : `${API_BASE}${tattoo.image}`
+              : ""
+          }
           alt={tattoo.name}
           className="booking-image"
         />
