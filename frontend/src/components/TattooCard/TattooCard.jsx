@@ -6,16 +6,24 @@ const TattooCard = ({ tattoo }) => {
   const navigate = useNavigate();
 
   const handleReserve = () => {
-    // Usar id_tattoo numérico en vez de uuid
     navigate(`/booking/${tattoo.id_tattoo}`);
   };
 
+  // usar VITE_API_URL 
+  const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
+  const imageSrc = tattoo?.image
+    ? tattoo.image.startsWith("http")
+      ? tattoo.image
+      : `${API_BASE}${tattoo.image}`
+    : "";
+
   return (
-    <div className="tattoo-card">
+    <article className="tattoo-card">
       <div className="tattoo-image-wrapper">
-        {tattoo.image && (
+        {imageSrc && (
           <img
-            src={`http://localhost:3000${tattoo.image}`}
+            src={imageSrc}
             alt={tattoo.name}
             className="tattoo-image"
           />
@@ -23,11 +31,9 @@ const TattooCard = ({ tattoo }) => {
       </div>
       <div className="tattoo-list">
         <h3>{tattoo.name}</h3>
-        <button className="reserve-btn" onClick={handleReserve}>
-          RESERVA
-        </button>
+        <button className="reserve-btn" onClick={handleReserve}>RESERVA</button>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -5,6 +5,7 @@ import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
 import Search from "../../pages/Search";
+import Shop from "../../pages/Shop";
 import Booking from "../../pages/Booking";
 import Profile from "../../pages/Profile";
 import Main from "../../layout/Main";
@@ -23,6 +24,7 @@ const AppRouter = () => {
         <Route path="/search" element={ <Main><Search /></Main>}/>
         <Route path="/booking/:id" element={ <Main><Booking /></Main>}/>
         <Route path="/profile" element={ <Main><Profile /></Main>}/>
+        <Route path="/shop" element={ <Main><Shop /></Main>}/>
       </Routes>
     </BrowserRouter>
   );
