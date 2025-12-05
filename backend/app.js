@@ -36,6 +36,16 @@ app.get('/api', (req, res) => {
 
 app.use("/api/auth", require("./routes/auth.routes"));
 
+//Esto hace que pille el dist de Docker y Render pille que estamos en produccion
+if (process.env.NODE_ENV==="production") {
+  // Servir archivos estáticos del frontend con React
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  // Manejar cualquier ruta que no sea de la API y servir el index.html de React
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+  });
+}
+
 
 app.use(error404); // Manejo de rutas no encontradas
 
