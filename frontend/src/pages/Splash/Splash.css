@@ -1,0 +1,42 @@
+.splash{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-nto{
+  max-width: 150px;
+}
+
+.loginbtn {
+  padding: 6px 24px;
+  color: black;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.loginbtn:hover {
+  background: black;
+  color: white;
+}
+
+.registerbtn {
+  padding: 6px 24px;
+  color: black;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.registerbtn:hover {
+  background: black;
+  color: white;
+}

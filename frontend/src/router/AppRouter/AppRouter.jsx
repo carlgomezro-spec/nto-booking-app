@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Splash from "../../pages/Splash";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
@@ -13,42 +14,15 @@ const AppRouter = () => {
      <BrowserRouter>
       <Routes>
         {/* Login y Register fuera de Main */}
+        <Route path="/" element={<Splash />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
         {/* Rutas dentro de Main */}
-        <Route
-          path="/home"
-          element={
-            <Main>
-              <Home />
-            </Main>
-          }
-        />
-        <Route
-          path="/search"
-          element={
-            <Main>
-              <Search />
-            </Main>
-          }
-        />
-        <Route
-          path="/booking/:id"
-          element={
-            <Main>
-              <Booking />
-            </Main>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <Main>
-              <Profile />
-            </Main>
-          }
-        />
+        <Route path="/home" element={ <Main><Home /></Main>}/>
+        <Route path="/search" element={ <Main><Search /></Main>}/>
+        <Route path="/booking/:id" element={ <Main><Booking /></Main>}/>
+        <Route path="/profile" element={ <Main><Profile /></Main>}/>
       </Routes>
     </BrowserRouter>
   );

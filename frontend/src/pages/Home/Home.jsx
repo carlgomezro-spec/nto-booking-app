@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid"; // Importar UUID
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import TattooCard from "../../components/TattooCard";
+import TattooCare from "../../components/TattooCare";
 import { getTattoos } from "../../services/tattooService";
 import "../Home/Home.css";
 
@@ -68,8 +69,8 @@ useEffect(() => {
     ))}
   </div>
 )}
+  <TattooCare></TattooCare>
     </section>
-    
   );
 };
 

@@ -1,0 +1,16 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "../Splash/Splash.css";
+
+
+export default function Splash() {
+  return (
+    <section className="splash">
+      <img src="/assets/NTO.webp" className="logo-nto" ></img>
+      <div>
+        <Link to="/login"><button className="loginbtn">Log In</button></Link>
+        <Link to="/register"><button className="registerbtn">Register</button></Link>
+      </div>
+    </section>
+  );
+}
