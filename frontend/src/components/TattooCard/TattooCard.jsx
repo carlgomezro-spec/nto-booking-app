@@ -9,14 +9,17 @@ const TattooCard = ({ tattoo }) => {
     navigate(`/booking/${tattoo.id_tattoo}`);
   };
 
-  // usar VITE_API_URL 
+  // Base URL de la API desde VITE
   const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
-  const imageSrc = tattoo?.image
-    ? tattoo.image.startsWith("http")
+  // Normalizar el nombre de la imagen para evitar duplicar /uploads
+  const cleanImage = tattoo.image?.replace(/^\/?uploads\/?/, "");
+
+  const imageSrc = cleanImage
+    ? `${API_BASE}/uploads/${cleanImage}`
+    : tattoo.image?.startsWith("http")
       ? tattoo.image
-      : `${API_BASE}${tattoo.image}`
-    : "";
+      : ""; // fallback vacío si no hay imagen
 
   return (
     <article className="tattoo-card">
@@ -31,7 +34,9 @@ const TattooCard = ({ tattoo }) => {
       </div>
       <div className="tattoo-list">
         <h3>{tattoo.name}</h3>
-        <button className="reserve-btn" onClick={handleReserve}>RESERVA</button>
+        <button className="reserve-btn" onClick={handleReserve}>
+          RESERVA
+        </button>
       </div>
     </article>
   );

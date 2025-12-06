@@ -27,7 +27,7 @@ app.use("/api/tattoos", require("./routes/tattoo.routes"));
 app.use("/api/bookings", require("./routes/booking.routes")); 
 
 // Para poder acceder a las imágenes
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Ruta base de comprobación
 app.get('/api', (req, res) => {
