@@ -21,6 +21,14 @@ module.exports = {
     const { rows } = await pool.query(queries.update, [id_user, id_tattoo, date_booking, hour_booking, id_booking]);
     return rows[0];
   },
+  
+  updateDateTime: async (id_booking, { date_booking, hour_booking }) => {
+  const { rows } = await pool.query(
+    queries.updateDateTime,
+    [date_booking, hour_booking, id_booking]
+  );
+  return rows[0];
+},
 
   delete: async (id_booking) => {
     const { rows } = await pool.query(queries.delete, [id_booking]);
