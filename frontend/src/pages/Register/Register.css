@@ -1,0 +1,50 @@
+.register-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.register-header {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espacio entre icono y título */
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  background: white;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los inputs */
+.register-form input {
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.register-btn {
+  padding: 15px 80px;
+  color: black;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.register-btn:hover {
+  background: black;
+  color: white;
+}
+

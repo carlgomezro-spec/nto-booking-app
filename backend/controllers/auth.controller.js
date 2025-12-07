@@ -43,7 +43,13 @@ module.exports = {
         jwtConfig.secret,
         { expiresIn: jwtConfig.expiresIn }
       );
-      res.json({ token });
+      res.json({token, user: {
+        id_user: user.id_user,
+        name: user.name,
+        email: user.email,
+        role: user.role
+        }
+});
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

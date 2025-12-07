@@ -13,12 +13,11 @@ const Booking = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Obtener usuario logueado desde localStorage
-  const user = JSON.parse(localStorage.getItem("user"));
-  const id_user = user ? user.id_user : null;
-
   // usar VITE_API_URL
   const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
+  // Obtener token desde localStorage
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (!/^\d+$/.test(id)) {
@@ -29,7 +28,7 @@ const Booking = () => {
 
     const fetchTattoo = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/api/tattoos/${id}`);
+        const res = await axios.get(`${API_BASE}/tattoos/${id}`);
         setTattoo(res.data);
         setLoading(false);
       } catch {
@@ -42,25 +41,33 @@ const Booking = () => {
   }, [id, API_BASE]);
 
   const handleConfirmBooking = async () => {
-    if (!id_user) return alert("Debes estar logueado para reservar");
+    if (!token) return alert("Debes estar logueado para reservar");
     if (!date || !time) return alert("Selecciona fecha y hora");
 
     // Combinar fecha y hora en timestamp ISO
     const dateTimeISO = new Date(`${date}T${time}:00`).toISOString();
     const hour_booking = `${time}:00`;
 
-    console.log({ id_user, id_tattoo: tattoo.id_tattoo, date_booking: dateTimeISO, hour_booking });
+    console.log({ id_tattoo: tattoo.id_tattoo, date_booking: dateTimeISO, hour_booking });
 
     try {
-      await axios.post(`${API_BASE}/api/bookings`, {
-        id_user,
-        id_tattoo: tattoo.id_tattoo,
-        date_booking: dateTimeISO,
-        hour_booking,
-      });
+      await axios.post(
+        `${API_BASE}/bookings`,
+        {
+          id_tattoo: tattoo.id_tattoo,
+          date_booking: dateTimeISO,
+          hour_booking,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // <-- token enviado correctamente
+          },
+        }
+      );
 
       alert("Reserva completada!");
-      navigate("/profile");
+      navigate("/home");
     } catch (err) {
       console.error(err.response ? err.response.data : err);
       alert("No se pudo crear la reserva");

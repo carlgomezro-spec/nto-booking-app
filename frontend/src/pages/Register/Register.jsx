@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../services/userService";
+import "../Register/Register.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,38 +23,41 @@ const Register = () => {
       setError(err.response?.data?.message || "Error al registrarse");
     }
   };
-  return <section>
+  return <section className="register-section">
+  <div className="register-header">
     <Link to="/"><TbArrowBackUp color="black" size={24} /></Link>
     <h1>Register</h1>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Nombre"
-        value={form.name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        value={form.password}
-        onChange={handleChange}
-        required
-      />
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <button type="submit">Registrarse</button>
-    </form>
-    </section>;
+  </div>
+  <form className="register-form" onSubmit={handleSubmit}>
+    <input
+      type="text"
+      name="name"
+      placeholder="Nombre"
+      value={form.name}
+      onChange={handleChange}
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      value={form.email}
+      onChange={handleChange}
+      required
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Contraseña"
+      value={form.password}
+      onChange={handleChange}
+      required
+    />
+    {error && <p style={{ color: "red" }}>{error}</p>}
+    <button className="register-btn" type="submit">Registrarse</button>
+  </form>
+</section>
+
 };
 
 export default Register;
