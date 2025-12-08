@@ -6,6 +6,107 @@
 .booking-image {
   max-width: 400px; /* Limita el tamaño máximo */
   width: 100%;       /* Responsive */
-  border-radius: 10px;
   object-fit: cover;
+}
+
+.booking-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Arial', sans-serif;
+  color: #222;
+}
+
+.booking-note {
+  background: #e6e6e6;
+  border-left: 5px solid #000000;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+
+.booking-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.booking-image {
+  max-width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra hijos, incluido el botón */
+}
+
+.booking-info h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.booking-info p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.datepicker-input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.datepicker-input:focus {
+  border-color: #4285F4;
+  box-shadow: 0 0 0 3px rgba(66,133,244,0.25);
+  outline: none;
+}
+
+.confirm-booking-btn {
+  display: flex;
+  justify-content: center;
+  padding: 15px 80px;
+  color: black;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.confirm-booking-btn:hover {
+  background: black;
+  color: white;
+}
+
+
+/* color de las horas bloqueadas */
+.time-slot-booked {
+  background-color: #ffdddd !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  position: relative;
+}
+
+/* tooltip al pasar el mouse */
+.time-slot-booked:hover::after {
+  content: "Hora ya reservada";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -25px;
+  background-color: #ff5555;
+  color: #fff;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
 }

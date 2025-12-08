@@ -2,6 +2,8 @@ import api from "../apiClient";
 
 export const login = async (email, password) => {
   const { data } = await api.post("/auth/login", { email, password });
+    console.log("Login response:", data); // <--- aquí ves todo lo que devuelve
+
 
   // Guardamos el token
   if (data.token) {
@@ -21,7 +23,16 @@ export const register = async (name, email, password) => {
 };
 
 export const getProfile = async () => {
-  const { data } = await api.get("/user/profile");
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("No hay token");
+
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  if (!storedUser) throw new Error("No hay usuario en localStorage");
+
+  const userId = storedUser.id_user; // <-- aquí usamos el campo correcto
+  if (!userId) throw new Error("No hay id_user del usuario");
+
+  const { data } = await api.get(`/users/${userId}`);
   return data;
 };
 

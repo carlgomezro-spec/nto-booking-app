@@ -1,0 +1,36 @@
+.google-calendar-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 18px;
+  background-color: #4285F4; /* azul Google */
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(66, 133, 244, 0.3);
+}
+
+.google-calendar-btn:hover {
+  background-color: #357ae8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(66, 133, 244, 0.4);
+}
+
+.google-calendar-btn {
+  display: flex;
+  justify-content: center;
+  padding: 15px 80px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.google-calendar-btn:hover {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}

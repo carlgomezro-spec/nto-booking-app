@@ -7,8 +7,11 @@ const adminMiddleware = require("../middlewares/admin.midleware");
 
 router.get('/', authMiddleware, adminMiddleware, bookingController.getAllBookings); // solo admin puede listar todos
 router.get('/:id', authMiddleware, bookingController.getBookingById); // usuario normal puede ver su booking
+// GET /api/bookings/tattoo/:id
+router.get('/tattoo/:id', authMiddleware, bookingController.getBookingsByTattoo);
 router.post('/', authMiddleware, bookingController.createBooking); // cualquiera logueado puede crear
 router.put('/:id', authMiddleware, bookingController.updateBookingDateTime); // propietario o admin (opcional)
+
 
 router.delete('/:id', authMiddleware, adminMiddleware, bookingController.deleteBooking); // solo admin puede borrar
 

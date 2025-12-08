@@ -12,6 +12,14 @@ module.exports = {
     return rows[0];
   },
 
+  getByTattooId: async (id_tattoo) => {
+  const { rows } = await pool.query(
+    'SELECT * FROM booking WHERE id_tattoo = $1 ORDER BY date_booking, hour_booking',
+    [id_tattoo]
+  );
+  return rows;
+},
+
   create: async ({ id_user, id_tattoo, date_booking, hour_booking }) => {
     const { rows } = await pool.query(queries.create, [id_user, id_tattoo, date_booking, hour_booking]);
     return rows[0];
