@@ -1,0 +1,26 @@
+.shop-section img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .shop-section {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+  .shop-section img {
+    max-width: 400px;
+  }
+}
+
+/* Grandes pantallas */
+@media screen and (min-width: 1200px) {
+
+  .shop-section img {
+    max-width: 500px;
+  }
+}

@@ -21,6 +21,20 @@ module.exports = {
     }
   },
 
+  getBookingsByTattoo: async (req, res) => {
+  try {
+    const tattooId = req.params.id;
+
+    // Llama al modelo para obtener reservas de este tatuaje
+    const bookings = await Booking.getByTattooId(tattooId);
+
+    res.json(bookings);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+},
+
   createBooking: async (req, res) => {
   try {
     if (!req.user || !req.user.id_user) {

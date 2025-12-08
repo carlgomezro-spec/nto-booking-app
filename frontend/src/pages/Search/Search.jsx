@@ -1,31 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getTattoos } from "../../services/tattooService";
+import TattooCard from "../../components/TattooCard";
+import "./Search.css";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [style, setStyle] = useState("");
+  const [allTattoos, setAllTattoos] = useState([]);
+  const [filteredTattoos, setFilteredTattoos] = useState([]);
 
-  const handleSearch = () => {
-    // Aquí llamarías a tu API con query
-    console.log("Buscar:", query);
-    setResults([]); // reemplaza con resultados reales
-  };
+  useEffect(() => {
+    const fetchTattoos = async () => {
+      try {
+        const data = await getTattoos();
+        setAllTattoos(data);
+        setFilteredTattoos(data); // inicializa con todos
+      } catch (error) {
+        console.error("Error fetching tattoos:", error);
+      }
+    };
+    fetchTattoos();
+  }, []);
+
+  // Filtrado dinámico cada vez que query o style cambian
+  useEffect(() => {
+    const filtered = allTattoos.filter((tattoo) => {
+      const matchesQuery = tattoo.name.toLowerCase().includes(query.toLowerCase());
+
+      let tattooStyle = "";
+      if (tattoo.description.includes("tribal")) tattooStyle = "tribal";
+      else if (tattoo.description.includes("Flor") || tattoo.description.includes("floral")) tattooStyle = "floral";
+      else if (tattoo.description.includes("geométrico")) tattooStyle = "geométrico";
+
+      const matchesStyle = style ? tattooStyle === style : true;
+
+      return matchesQuery && matchesStyle;
+    });
+
+    setFilteredTattoos(filtered);
+  }, [query, style, allTattoos]);
 
   return (
-    <div>
-      <h1>Search Tattoos</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for a tattoo"
-      />
-      <button onClick={handleSearch}>Search</button>
+    <div className="search-container">
+      <h1>Search</h1>
+
+      <div className="search-filters">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Buscar tatuajes..."
+        />
+
+        <select value={style} onChange={(e) => setStyle(e.target.value)}>
+          <option value="">Todos los estilos</option>
+          <option value="tribal">Tribal</option>
+          <option value="floral">Floral</option>
+          <option value="geométrico">Geométrico</option>
+        </select>
+      </div>
 
       <div className="search-results">
-        {results.length === 0 ? (
+        {filteredTattoos.length === 0 ? (
           <p>No results</p>
         ) : (
-          results.map((item) => <p key={item.id}>{item.name}</p>)
+          filteredTattoos.map((tattoo) => <TattooCard key={tattoo.id_tattoo} tattoo={tattoo} />)
         )}
       </div>
     </div>
