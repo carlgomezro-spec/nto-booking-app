@@ -6,6 +6,10 @@ WORKDIR /app
 # Copiar todos los archivos del proyecto
 COPY . .
 
+# Recibir la variable desde Render
+ARG VITE_API_URL
+ENV VITE_API_URL=${VITE_API_URL}
+
 # Instalar dependencias del package.json principal
 RUN npm install
 
