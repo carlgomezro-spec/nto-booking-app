@@ -8,8 +8,8 @@ const Shop = () => {
       <p>
         <strong>UNDER CONSTRUCTION</strong> 
       </p>
-      <p>Estamos trabajando para traerte los mejores diseños de tatuajes a tu ropa.</p>
       <img src="/assets/mockup-chica.jpg" alt="Mockup de chica" />
+      <p>Estamos trabajando para traerte los mejores diseños de tatuajes a tu ropa.</p>
     </section>
   );
 };

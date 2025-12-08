@@ -1,13 +1,19 @@
 import React from "react";
 import Footer from "../Footer/Footer";
+import FooterAdmin from "../FooterAdmin";
 
 const Main = ({ children }) => {
-  return <div className="layout-container">
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const role = storedUser?.role || "user";
+
+  return (
+    <div className="layout-container">
       <main style={{ paddingBottom: "80px" }}>
         {children}
       </main>
-      <Footer />
+      {role === "admin" ? <FooterAdmin /> : <Footer />}
     </div>
+  );
 };
 
 export default Main;

@@ -36,6 +36,23 @@ export const getProfile = async () => {
   return data;
 };
 
+export const updateUser = async (id, updatedData) => {
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("No hay token");
+
+  const { data } = await api.put(`/users/${id}`, updatedData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  // Actualizamos el localStorage con los nuevos datos
+  localStorage.setItem("user", JSON.stringify(data));
+
+  return data;
+};
+
+
 export const logout = () => {
   localStorage.removeItem("token");
 };
