@@ -7,6 +7,7 @@ import Register from "../../pages/Register";
 import Search from "../../pages/Search";
 import Shop from "../../pages/Shop";
 import Booking from "../../pages/Booking";
+import GoogleSuccess from "../../pages/GoogleSucces";
 import Profile from "../../pages/Profile";
 import Admin from "../../pages/Admin";
 import Main from "../../layout/Main";
@@ -22,6 +23,8 @@ const AppRouter = () => {
         <Route path="/" element={<Splash />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/auth/google/success" element={<GoogleSuccess />} />
+
 
         {/* Rutas dentro de Main */}
         <Route path="/home" element={ <Main><Home /></Main>}/>

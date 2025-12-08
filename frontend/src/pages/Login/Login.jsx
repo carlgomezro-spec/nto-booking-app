@@ -56,6 +56,14 @@ const Login = () => {
             placeholder="Password"
           />
         </div>
+
+        <button
+  onClick={() =>
+    window.location.href = "http://localhost:3000/api/auth/google"
+  }
+>
+  Iniciar sesión con Google
+</button>
         
         <button className="login-btn" type="submit">Iniciar sesión</button>
       </form>

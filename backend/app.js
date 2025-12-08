@@ -3,6 +3,13 @@ const cowsay = require("cowsay");
 
 const app = express(); // Creando el servidor
 app.use(express.json());
+
+// Passport
+const passport = require("passport");
+require("./config/googleAuth"); // <--- Importa tu estrategia Google
+
+app.use(passport.initialize());
+
 const path = require("path");
 const cors = require("cors")
 // Permitir cualquier origen (para desarrollo)
