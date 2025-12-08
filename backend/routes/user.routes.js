@@ -8,7 +8,7 @@ const adminMiddleware = require("../middlewares/admin.midleware");
 router.get('/', authMiddleware, adminMiddleware, userController.getAllUsers); // solo admin puede listar todos
 router.get('/:id', authMiddleware, userController.getUserById); // cualquiera puede ver un usuario (opcional)
 router.post('/', authMiddleware, adminMiddleware, userController.createUser); // solo admin puede crear
-router.put('/:id', authMiddleware, adminMiddleware, userController.updateUser); // solo admin puede actualizar
+router.put('/:id', authMiddleware, userController.updateUser); // admin y user pueden actualizar
 router.delete('/:id', authMiddleware, adminMiddleware, userController.deleteUser); // solo admin puede borrar
 
 
