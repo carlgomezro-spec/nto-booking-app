@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
-import { login } from "../../services/userService"
+import { login } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
 import "../Login/Login.css";
 
@@ -9,6 +9,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  // URL del backend tomada de VITE_API_URL
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,13 +60,13 @@ const Login = () => {
           />
         </div>
 
+        {/* Botón Google usando VITE_API_URL */}
         <button
-  onClick={() =>
-    window.location.href = "http://localhost:3000/api/auth/google"
-  }
->
-  Iniciar sesión con Google
-</button>
+          type="button"
+          onClick={() => window.location.href = `${API_URL}/auth/google`}
+        >
+          Iniciar sesión con Google
+        </button>
         
         <button className="login-btn" type="submit">Iniciar sesión</button>
       </form>
