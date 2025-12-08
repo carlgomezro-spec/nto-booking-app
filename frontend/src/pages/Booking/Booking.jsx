@@ -80,6 +80,7 @@ const Booking = () => {
   return (
     <section className="booking-page">
       <h1>Reserva tu tatuaje</h1>
+      <p><strong>RECUERDA: </strong>Es obligatorio el pago de <strong>38€ </strong>como depósito para reservar cita para tattoo. Sin depósito, no podemos dar cita. Cuando hables con nosotros te enviaremos un enlace para el pago del depósito.</p>
 
       <div className="booking-image-wrapper">
         <img

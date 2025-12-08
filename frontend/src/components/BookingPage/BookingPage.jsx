@@ -48,7 +48,7 @@ const BookingsPage = ({ bookings: initialBookings }) => {
 
   return (
     <div className="admin-table">
-      <h2>Bookings</h2>
+      <h2>Gestionar Reservas</h2>
 
       <input
         type="text"
@@ -89,7 +89,7 @@ const BookingsPage = ({ bookings: initialBookings }) => {
               </td>
               <td>
                 <button onClick={() => handleUpdate(b)}>Guardar</button>
-                <button onClick={() => handleDelete(b.id_booking)} style={{marginLeft:"5px", background:"red", color:"white"}}>Eliminar</button>
+                <button onClick={() => handleDelete(b.id_booking)}>Eliminar</button>
               </td>
             </tr>
           ))}

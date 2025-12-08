@@ -36,9 +36,12 @@ const Admin = () => {
       {/* Cards de dashboard */}
       <Dashboard bookings={bookings} />
 
+       {/* Tabla de bookings */}
+      <BookingsPage bookings={bookings} />
+
       {/* Tabla de usuarios */}
       <div className="admin-table">
-        <h2>Usuarios</h2>
+        <h2>Gestionar Usuarios</h2>
         <table>
           <thead>
             <tr>
@@ -57,8 +60,7 @@ const Admin = () => {
         </table>
       </div>
 
-      {/* Tabla de bookings */}
-      <BookingsPage bookings={bookings} />
+     
     </section>
   );
 };
