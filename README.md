@@ -76,59 +76,60 @@ Relaciones:
 ## Estructura del proyecto
 
 backend/
-│   app.js
+│── app.js
 ├── config/
-│ └── db.js
-│ └── googleAuth.js
-│ └── jsonwebtoken.js
-│ └── swagger.js
+│   ├── db.js
+│   ├── googleAuth.js
+│   ├── jsonwebtoken.js
+│   └── swagger.js
 ├── controllers/
-│ └── auth.controller.js
-│ └── tattoo.controller.js
-│ └── user.controller.js
-│ └── tattoo.controller.js
+│   ├── auth.controller.js
+│   ├── tattoo.controller.js
+│   ├── user.controller.js
+│   └── booking.controller.js
 ├── middlewares/
-│ └── admin.midleware.js
-│ └── auth.middleware.js
-│ └── error404.js
-│ └── morgan.js
-│ └── upload.js
+│   ├── admin.middleware.js
+│   ├── auth.middleware.js
+│   ├── error404.js
+│   ├── morgan.js
+│   └── upload.js
 ├── models/
-│ └── booking.model.js
-│ └── tattoo.model.js
-│ └── user.model.js
-│ └── queries.js
+│   ├── booking.model.js
+│   ├── tattoo.model.js
+│   ├── user.model.js
+│   └── queries.js
 ├── routes/
-│ └── admin.routes.js
-│ └── auth.routes.js
-│ └── booking.routes.js
-│ └── tattoo.routes.js
-│ └── user.routes.js
-├── uploads/
-|
+│   ├── admin.routes.js
+│   ├── auth.routes.js
+│   ├── booking.routes.js
+│   ├── tattoo.routes.js
+│   └── user.routes.js
+└── uploads/
+│  
 frontend/
-│   index.html
+│── index.html
 ├── public/
-├── src/
-│ └── components
-│        └── Dashboard
-│        └── GoogleCalendarButton
-│        └── TattooCard
-│        └── UsersTable
-│        └── ...
-│ └── layout
-│        └── Main
-│        └── Footer
-│        └── FooterAdmin
-│ └── pages
-│        └── Admin
-│        └── Booking
-│        └── Home
-│        └── Login
-│        └── Profile
-│        └── ...
-│ └── router
-│ └── services
+└── src/
+    ├── components/
+    │   ├── Dashboard/
+    │   ├── GoogleCalendarButton/
+    │   ├── TattooCard/
+    │   ├── UsersTable/
+    │   └── ...
+    ├── layout/
+    │   ├── Main/
+    │   ├── Footer/
+    │   └── FooterAdmin/
+    ├── pages/
+    │   ├── Admin/
+    │   ├── Booking/
+    │   ├── Home/
+    │   ├── Login/
+    │   ├── Profile/
+    │   └── ...
+    ├── router/
+    └── services/
+
 
 
 ## 📘 Documentación API (Swagger)
