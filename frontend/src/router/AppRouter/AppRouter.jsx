@@ -11,8 +11,8 @@ import GoogleSuccess from "../../pages/GoogleSucces";
 import Profile from "../../pages/Profile";
 import Admin from "../../pages/Admin";
 import Main from "../../layout/Main";
-import Dashboard from "../../components/Dashboard/Dashboard";
 import BookingsPage from "../../components/BookingPage/BookingPage";
+import UsersPage from "../../components/UsersPage/UsersPage";
 
 
 const AppRouter = () => {
@@ -33,10 +33,12 @@ const AppRouter = () => {
         <Route path="/profile" element={ <Main><Profile /></Main>}/>
         <Route path="/shop" element={ <Main><Shop /></Main>}/>
 
-        {/* Ruta Admin protegida */}
         <Route path="/admin" element={<Main><Admin /></Main>}>
-            <Route index element={<Dashboard />} />           {/* /admin */}
-            <Route path="bookings" element={<BookingsPage />} />  {/* /admin/bookings */}
+        {/* /admin puro solo mensaje */}
+        {/* /admin/bookings */}
+        <Route path="bookings" element={<BookingsPage />} />  
+        {/* /admin/users */}
+        <Route path="users" element={<UsersPage />} />
         </Route>
 
       </Routes>

@@ -23,12 +23,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   background: white;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+.login-form p{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* Estilo para los inputs */
 .inputs input {
   border: 1px solid black;
@@ -36,7 +41,6 @@
   padding: 10px;
   font-size: 14px;
 }
-
 
 .login-btn {
   padding: 15px 80px;
@@ -55,3 +59,32 @@
   color: white;
 }
 
+.google-btn {
+  display: inline-flex;      /* usar flex para alinear icono + texto */
+  align-items: center;       /* centra verticalmente */
+  justify-content: center;   /* centra horizontalmente dentro del botón */
+  gap: 10px;                 /* espacio entre icono y texto */
+  padding: 12px 20px;        /* ajustar padding si hace falta */
+  white-space: nowrap;       /* evita salto de línea entre icono y texto */
+  padding: 15px 80px;
+  color: black;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.google-btn:hover {
+  background: black;
+  color: white;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
+}

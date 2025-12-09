@@ -1,0 +1,148 @@
+/* Tablas desktop */
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.bookings-table th,
+.bookings-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+  color: #333;
+}
+
+.bookings-table th {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Botones desktop coherentes con UsersPage */
+.bookings-table td .save-btn,
+.bookings-table td .delete-btn {
+  padding: 8px 16px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: 6px;
+  transition: 0.2s;
+}
+
+.bookings-table td .save-btn {
+  background: black;
+  color: white;
+}
+
+.bookings-table td .save-btn:hover {
+  background: white;
+  color: black;
+}
+
+.bookings-table td .delete-btn {
+  background: white;
+  color: black;
+}
+
+.bookings-table td .delete-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* --------- 🔥 RESPONSIVE SIN SCROLL (formato cards) --------- */
+@media (max-width: 650px) {
+  
+  /* Ocultamos encabezados */
+  .bookings-table thead {
+    display: none;
+  }
+
+  .bookings-table,
+  .bookings-table tbody,
+  .bookings-table tr,
+  .bookings-table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* Cada booking se convierte en una card blanca */
+  .bookings-table tr {
+    background: white;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  }
+
+  /* filas en formato flex (etiqueta + valor) */
+  .bookings-table td {
+    border: none;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  /* Etiquetas responsivas */
+  .bookings-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+  }
+
+  /* Inputs adaptados a móvil */
+  input[type="date"],
+  input[type="time"] {
+    width: 140px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  /* Mantener tus botones dentro del card */
+  .actions-cell {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .actions-cell button {
+    flex: 1; /* que se adapten */
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  .actions-cell .save-btn {
+    background: black;
+    color: white;
+  }
+
+  .actions-cell .save-btn:hover {
+    background: white;
+    color: black;
+  }
+
+  .actions-cell .delete-btn {
+    background: white;
+    color: black;
+  }
+
+  .actions-cell .delete-btn:hover {
+    background: black;
+    color: white;
+  }
+}
+
+/* Inputs desktop */
+.bookings-table input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 150px;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+}

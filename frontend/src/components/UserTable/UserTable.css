@@ -1,0 +1,144 @@
+.user-table-container {
+  margin-top: 20px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+/* --- Estilos desktop --- */
+.user-table th,
+.user-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+  color: #333; /* texto principal */
+}
+
+.user-table th {
+  background: #f5f5f5; /* cabecera gris clara */
+  font-weight: bold;
+}
+
+/* Botones desktop coherentes con BookingsPage */
+.user-table td .save-btn,
+.user-table td .delete-btn {
+  padding: 8px 16px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: 6px;
+  transition: 0.2s;
+}
+
+.user-table td .save-btn {
+  background: black;
+  color: white;
+}
+
+.user-table td .save-btn:hover {
+  background: white;
+  color: black;
+}
+
+.user-table td .delete-btn {
+  background: white;
+  color: black;
+}
+
+.user-table td .delete-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* Hover solo en desktop */
+@media (min-width: 601px) {
+  .user-table tr:hover {
+    background: #fafafa;
+  }
+}
+
+/* --- 🎯 MODO MÓVIL SIN SCROLL: formato tarjetas --- */
+@media (max-width: 600px) {
+  .user-table thead {
+    display: none; /* ocultamos cabecera */
+  }
+
+  .user-table,
+  .user-table tbody,
+  .user-table tr,
+  .user-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .user-table tr {
+    background: white; /* tarjetas blancas */
+    margin-bottom: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  }
+
+  .user-table td {
+    border: none;
+    padding: 10px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Etiqueta a la izquierda (Nombre:, Email:, Acciones:) */
+  .user-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+  }
+
+  /* Botones coherentes con BookingsPage */
+  .actions-cell button {
+    margin-left: 8px;
+    padding: 6px 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: 0.2s;
+  }
+
+  .actions-cell .save-btn {
+    background: black;
+    color: white;
+  }
+
+  .actions-cell .save-btn:hover {
+    background: white;
+    color: black;
+  }
+
+  .actions-cell .delete-btn {
+    background: white;
+    color: black;
+  }
+
+  .actions-cell .delete-btn:hover {
+    background: black;
+    color: white;
+  }
+}
+
+/* Inputs coherentes con BookingsPage */
+.user-table input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 250px;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+}

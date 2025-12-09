@@ -28,7 +28,7 @@ const Login = () => {
       }
 
       if (user.role === "admin") {
-        navigate("/admin");
+        navigate("/admin/bookings");
       } else {
         navigate("/home");
       }
@@ -59,16 +59,12 @@ const Login = () => {
             placeholder="Password"
           />
         </div>
-
-        {/* Botón Google usando VITE_API_URL */}
-        <button
-          type="button"
-          onClick={() => window.location.href = `${API_URL}/auth/google`}
-        >
-          Iniciar sesión con Google
-        </button>
         
         <button className="login-btn" type="submit">Iniciar sesión</button>
+        <p>o</p>
+        {/* Botón Google usando VITE_API_URL */}
+        <button className="google-btn" type="button" onClick={() => window.location.href = `${API_URL}/auth/google`}> <img src="/assets/google-icon.webp" alt="Google logo" style={{ width: "25px"}}
+        />CONTINUAR con Google</button>
       </form>
     </section>
   );

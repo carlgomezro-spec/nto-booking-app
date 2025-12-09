@@ -12,7 +12,7 @@ export default function Splash() {
       </div>
       <div className="actions">
         <Link to="/login"><button className="loginbtn">Log In</button></Link>
-        <Link to="/register"><button className="registerbtn">Register</button></Link>
+        <Link to="/register"><button className="registerbtn">Sign In</button></Link>
       </div>
     </section>
   );
