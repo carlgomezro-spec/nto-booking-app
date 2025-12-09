@@ -105,7 +105,8 @@ backend/
 │   ├── tattoo.routes.js
 │   └── user.routes.js
 └── uploads/
-│  
+
+
 frontend/
 │── index.html
 ├── public/
@@ -129,6 +130,7 @@ frontend/
     │   └── ...
     ├── router/
     └── services/
+
 
 
 
