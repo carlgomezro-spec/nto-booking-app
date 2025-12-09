@@ -16,6 +16,11 @@ export const deleteUser = async (userId) => {
   return response.data;
 };
 
+export const updateUser = async (id_user, updatedUser) => {
+  const response = await api.put(`/users/${id_user}`, updatedUser);
+  return response.data;
+};
+
 export const deleteBooking = async (bookingId) => {
   const response = await api.delete(`/bookings/${bookingId}`);
   return response.data;

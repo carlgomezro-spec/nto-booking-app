@@ -26,7 +26,7 @@ const Register = () => {
   return <section className="register-section">
   <div className="register-header">
     <Link to="/"><TbArrowBackUp color="black" size={24} /></Link>
-    <h1>Register</h1>
+    <h1>Sign In</h1>
   </div>
   <form className="register-form" onSubmit={handleSubmit}>
     <input
