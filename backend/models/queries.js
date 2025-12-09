@@ -17,6 +17,12 @@ module.exports = {
       UPDATE booking SET id_user = $1, id_tattoo = $2, date_booking = $3, hour_booking = $4
       WHERE id_booking = $5 RETURNING *
     `,
+    updateDateTime: `
+      UPDATE booking 
+      SET date_booking = $1, hour_booking = $2
+      WHERE id_booking = $3
+      RETURNING *
+    `,
     delete: 'DELETE FROM booking WHERE id_booking = $1 RETURNING *'
   },
 

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const jwtConfig = require('../config/jsonwebtoken'); // <-- importamos la configuración
+const jwtConfig = require('../config/jsonwebtoken');
 
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, jwtConfig.secret);
-    req.user = decoded; // Guardamos info del usuario en req.user
+    req.user = decoded; // req.user.id_user estará disponible
     next();
   } catch (err) {
     res.status(401).json({ message: 'Token inválido' });

@@ -48,5 +48,24 @@ module.exports = {
   getByEmail: async (email) => {
     const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
     return rows[0];
+  },
+    createGoogleUser: async (email, name = "GoogleUser") => {
+    // Generar una contraseña aleatoria solo para cumplir NOT NULL
+    const randomPass = Math.random().toString(36).slice(-10);
+    const hashedPassword = await bcrypt.hash(randomPass, 10);
+
+    const query = `
+      INSERT INTO users (name, email, password, role, is_logged)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING *;
+    `;
+
+    const values = [name, email, hashedPassword, 'client', false];
+
+    const { rows } = await pool.query(query, values);
+    return rows[0];
   }
+
 };
+
+

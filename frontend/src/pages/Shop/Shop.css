@@ -1,0 +1,25 @@
+.shop-section {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.shop-section h1 {
+  margin-bottom: 15px;
+}
+
+.shop-section p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.shop-section strong {
+  color: #f44336; /* rojo llamativo como botón logout */
+}
+
+.shop-section img {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

@@ -1,5 +1,6 @@
 const Booking = require('../models/booking.model');
 
+
 module.exports = {
   getAllBookings: async (req, res) => {
     try {
@@ -20,14 +21,41 @@ module.exports = {
     }
   },
 
+  getBookingsByTattoo: async (req, res) => {
+  try {
+    const tattooId = req.params.id;
+
+    // Llama al modelo para obtener reservas de este tatuaje
+    const bookings = await Booking.getByTattooId(tattooId);
+
+    res.json(bookings);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+},
+
   createBooking: async (req, res) => {
-    try {
-      const newBooking = await Booking.create(req.body);
-      res.status(201).json(newBooking);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+  try {
+    if (!req.user || !req.user.id_user) {
+      return res.status(401).json({ message: "Usuario no autenticado" });
     }
-  },
+
+    const id_user = req.user.id_user;
+
+    const { id_user: _ignore, ...bookingData } = req.body;
+
+    const newBooking = await Booking.create({
+      ...bookingData,
+      id_user
+    });
+
+    res.status(201).json(newBooking);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+},
 
   updateBooking: async (req, res) => {
     try {
@@ -38,6 +66,19 @@ module.exports = {
       res.status(500).json({ error: err.message });
     }
   },
+
+  updateBookingDateTime: async (req, res) => {
+      const { id } = req.params;
+      const { date_booking, hour_booking } = req.body;
+  try {
+    const updatedBooking = await Booking.updateDateTime(id, { date_booking, hour_booking });
+    if (!updatedBooking) return res.status(404).json({ message: 'Booking not found' });
+    res.json(updatedBooking);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+},
 
   deleteBooking: async (req, res) => {
     try {
