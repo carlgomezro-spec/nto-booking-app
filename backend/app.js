@@ -8,6 +8,9 @@ app.use(express.json());
 const passport = require("passport");
 require("./config/googleAuth"); // <--- Importa tu estrategia Google
 
+// Swagger
+const { swaggerUi, swaggerSpec } = require("./config/swagger");
+
 app.use(passport.initialize());
 
 const path = require("path");
@@ -27,6 +30,9 @@ const morgan = require("./middlewares/morgan");
 
 // Configuración del logger con Morgan
 app.use(morgan(':method :∫url :status :param[id] - :response-time ms :body'));
+
+// Ruta Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Rutas
 app.use("/api/users", require("./routes/user.routes"));      

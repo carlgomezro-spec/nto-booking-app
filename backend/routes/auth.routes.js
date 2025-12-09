@@ -20,4 +20,80 @@ router.get('/google/callback',
     }
 );
 
+/**
+ * @openapi
+ * tags:
+ *   name: Auth
+ *   description: Autenticación de usuarios
+ */
+
+/**
+ * @openapi
+ * /api/auth/register:
+ *   post:
+ *     tags: [Auth]
+ *     summary: Registrar un nuevo usuario
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Usuario registrado
+ */
+
+/**
+ * @openapi
+ * /api/auth/login:
+ *   post:
+ *     tags: [Auth]
+ *     summary: Login del usuario
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login correcto
+ */
+
+/**
+ * @openapi
+ * /api/auth/google:
+ *   get:
+ *     tags: [Auth]
+ *     summary: Login con Google OAuth
+ *     responses:
+ *       302:
+ *         description: Redirección a Google
+ */
+
+/**
+ * @openapi
+ * /api/auth/google/callback:
+ *   get:
+ *     tags: [Auth]
+ *     summary: Callback de Google OAuth
+ *     responses:
+ *       302:
+ *         description: Redirige al frontend con token
+ */
+
+
 module.exports = router;
