@@ -75,6 +75,7 @@ Relaciones:
 
 ## Estructura del proyecto
 
+```bash
 backend/
 │── app.js
 ├── config/
@@ -130,8 +131,7 @@ frontend/
     │   └── ...
     ├── router/
     └── services/
-
-
+```
 
 
 ## 📘 Documentación API (Swagger)
