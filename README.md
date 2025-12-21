@@ -5,6 +5,8 @@ Aplicación web completa para **reservar citas de tatuajes online**, con autenti
 ---
 
 <img width="376" height="522" alt="Captura de pantalla 2025-12-21 a las 10 54 08" src="https://github.com/user-attachments/assets/979bb02e-db12-4a86-bc8d-ab49b5c12153" />
+<img width="358" height="468" alt="Captura de pantalla 2025-12-21 a las 11 38 43" src="https://github.com/user-attachments/assets/f40196bc-7694-4583-9314-6ebf078d63e0" />
+
 
 La plataforma incluye:
 - Frontend en React
