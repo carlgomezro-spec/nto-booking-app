@@ -25,8 +25,7 @@ La plataforma incluye:
 ---
 # 🚀 Aplicación desplegada
 
-- https://globo-market.onrender.com
-
+- https://nto-booking-app.onrender.com
 ---
 
 # 🏗️ Arquitectura general
