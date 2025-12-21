@@ -23,6 +23,11 @@ La plataforma incluye:
 - Editar perfil
 
 ---
+# 🚀 Aplicación desplegada
+
+- https://nto-booking-app.onrender.com
+
+---
 
 # 🏗️ Arquitectura general
 
@@ -136,3 +141,4 @@ frontend/
 
 ## 📘 Documentación API (Swagger)
 - http://localhost:3000/api-docs/
+  
