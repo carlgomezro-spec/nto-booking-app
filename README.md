@@ -2,6 +2,10 @@
 
 Aplicación web completa para **reservar citas de tatuajes online**, con autenticación tradicional y con **Google OAuth**, gestión de usuarios, administración de reservas y sincronización con **Google Calendar**.
 
+---
+
+<img width="376" height="522" alt="Captura de pantalla 2025-12-21 a las 10 54 08" src="https://github.com/user-attachments/assets/979bb02e-db12-4a86-bc8d-ab49b5c12153" />
+
 La plataforma incluye:
 - Frontend en React
 - Backend en Node.js + Express
